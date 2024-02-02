@@ -1,54 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/estiloIndex.css">
-    <link rel="stylesheet" href="css/estiloMenu.css">
-    <link rel="manifest" href="/manifest.json">
-    <script>
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('/service-worker.js')
-            .then(registration => {
-              console.log('Service Worker registrado con éxito:', registration);
-            })
-            .catch(error => {
-              console.log('Error al registrar el Service Worker:', error);
-            });
-        }
-      </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario Dinámico</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="manifest" href="./manifest.json">
 </head>
 <body>
-    <div id="idContenedorIndex">
-        <header id="idEncabezadoIndex">
-            <h1>Mi Pagina Web && APP</h1>
-        </header>
-        <nav id="idMenuIndex">
-            <ul class="topnav lista-videos">
-                <li>
-                    <a class="active" href="paginas/inicio.html" target="iframeContenido">Inicio</a>
-                </li>
-                <li>
-                    <a href="paginas/ejemplo1.html" target="iframeContenido">Ejemplo 1</a>
-                </li>
-                <li>
-                    <a href="paginas/listavideos.html" target="iframeContenido">Lista videos</a>
-                </li>
-                <li class="right">
-                    <a href="paginas/perfil.html" target="iframeContenido">perfil</a>
-                </li>
-            </ul>
-        </nav>
-        
-        <section id="idContenidoIndex">
-            <iframe src="paginas/inicio.html" frameborder="0" name="iframeContenido" height="100%" width="100%">
 
-            </iframe>
-        </section>
-        <footer id="idPieIndex">
-            <p> Aqui va el pie de pagina</p>
-        </footer>
+<div class="container">
+  <h2>Formulario</h2>
+  
+  <form id="ubicacionForm" class="formulario ">
+    <div class="form-group">
+      <label for="paisSelect">País:</label>
+      <select class="form-control" id="paisSelect" onchange="cargarEstados()">
+        <option value="Mexico">México</option>
+        <option value="Korea">Corea</option>
+      </select>
     </div>
+
+    <div class="form-group">
+      <label for="estadoSelect">Estado:</label>
+      <select class="form-control" id="estadoSelect" onchange="cargarMunicipios()">
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="municipioSelect">Municipio:</label>
+      <select class="form-control" id="municipioSelect" onchange="cargarLocalidades()">
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="localidadSelect">Localidad:</label>
+      <select class="form-control" id="localidadSelect">
+      </select>
+    </div>
+
+    <button type="button" class="btn btn-primary" onclick="mostrarSeleccion()">Enviar</button>
+  </form>
+
+  <div id="resultado" style="margin-top: 20px; display: none;">
+    <h4>Ubicación seleccionada:</h4>
+    <p id="paisSeleccionado"></p>
+    <p id="estadoSeleccionado"></p>
+    <p id="municipioSeleccionado"></p>
+    <p id="localidadSeleccionada"></p>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="./js/script.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then((registration) => {
+        console.log('Service Worker registrado con éxito:', registration);
+      })
+      .catch((error) => {
+        console.log('Error al registrar el Service Worker:', error);
+      });
+  }
+</script>
+
 </body>
 </html>
+
+
+
